@@ -13,13 +13,13 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "Berrysoft";
     repo = pname;
-    tag = "v${version}";
+    rev = "v${version}";
     hash = "sha256-evrchI+r7NcpZPUUMgpCxaB4to1SBBpPwOxFM1V7SP8=";
   };
 
   cargoHash = "sha256-qZUcOo05YF/+G+S2xUlV3FRAf8tTJCunhSwOZXphIG8=";
 
-  cargoBuildFlags = [ "--workspace" "--exclude" "native"  ];
+  cargoBuildFlags = [ "--workspace" "--exclude" "native" ];
 
   doCheck = false;
 
