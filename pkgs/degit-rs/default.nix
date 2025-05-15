@@ -19,8 +19,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   sourceRoot = finalAttrs.src.name;
 
+  # The source repo doesn't provide a Cargo.lock file, so we need to create one
   postPatch = ''
-    # The source repo doesn't provide a Cargo.lock file, so we need to create one
     ln -s ${./Cargo.lock} Cargo.lock
   '';
 
@@ -40,6 +40,5 @@ rustPlatform.buildRustPackage (finalAttrs: {
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
     mainProgram = "degit";
-    maintainers = with lib.maintainers; [ chillcicada ];
   };
 })
