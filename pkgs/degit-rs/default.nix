@@ -6,7 +6,7 @@
   openssl,
 }:
 
-rustPlatform.buildRustPackage (finalAttrs: {
+rustPlatform.buildRustPackage {
   pname = "degit-rs";
   version = "0.1.3-unstable";
 
@@ -17,12 +17,12 @@ rustPlatform.buildRustPackage (finalAttrs: {
     hash = "sha256-swyfKnYQ+I4elnDnJ0yPDUryiFXEVnrGt9xHWiEe6wo=";
   };
 
-  sourceRoot = finalAttrs.src.name;
-
   # The source repo doesn't provide a Cargo.lock file, so we need to create one
   postPatch = ''
     ln -s ${./Cargo.lock} Cargo.lock
   '';
+
+  cargoLock.lockFile = ./Cargo.lock;
 
   cargoHash = "sha256-bUoZsXU7iWK7MZ/hXk1JNUX1hN88lrU1mc1rrYuiCYs=";
 
@@ -41,4 +41,4 @@ rustPlatform.buildRustPackage (finalAttrs: {
     platforms = lib.platforms.linux;
     mainProgram = "degit";
   };
-})
+}
