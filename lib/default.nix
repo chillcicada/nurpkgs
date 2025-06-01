@@ -1,6 +1,5 @@
-{ lib }:
+{ }:
 
-with lib;
 {
   # Add your library functions here
   #
