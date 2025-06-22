@@ -55,6 +55,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     description = "Next-generation Minecraft Launcher";
+    homepage = "https://corona.studio";
     license = lib.licenses.unfree;
     mainProgram = "LauncherX.Avalonia";
     platforms = lib.platforms.linux;
