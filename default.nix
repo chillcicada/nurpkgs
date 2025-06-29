@@ -15,6 +15,7 @@ in
   ark-pixel-font = pkgs.callPackage ./pkgs/ark-pixel-font { };
   fusion-pixel-font = pkgs.callPackage ./pkgs/fusion-pixel-font { };
 
+  clash-verge-rev = throw "nurpkgs 'clash-verge-rev' has been dropped in favor of nixpkgs instead."; # Added 2025-06-29
   typship = throw "nurpkgs 'typship' has been dropped in favor of nixpkgs instead."; # Added 2025-06-29
 }
 // pkgsByName
