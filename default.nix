@@ -17,6 +17,7 @@ in
 
   clash-verge-rev = throw "nurpkgs 'clash-verge-rev' has been dropped in favor of nixpkgs instead."; # Added 2025-06-29
   degit-rs = throw "nurpkgs 'degit-rs' has been dropped in favor of nixpkgs instead."; # Added 2025-06-29
+  tokei = throw "nurpkgs 'tokei' has been dropped in favor of nixpkgs instead."; # Added 2025-06-29
   typship = throw "nurpkgs 'typship' has been dropped in favor of nixpkgs instead."; # Added 2025-06-29
 }
 // pkgsByName
