@@ -38,8 +38,8 @@ stdenv.mkDerivation (finalAttrs: {
     mkdir -p $out/bin
     ln -s $out/app/astral/astral $out/bin/astral
 
-    mkdir -p $out/share/icons/hicolor/144x144/apps
-    cp ${./assets/icons/astral.png} $out/share/icons/hicolor/144x144/apps/astral.png
+    mkdir -p $out/share/icons/hicolor/128x128/apps
+    cp ${./assets/icons/astral.png} $out/share/icons/hicolor/128x128/apps/astral.png
 
     runHook postInstall
   '';
