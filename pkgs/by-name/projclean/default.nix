@@ -33,7 +33,6 @@ rustPlatform.buildRustPackage (finalAttrs: {
       asl20
     ];
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [ chillcicada ];
     mainProgram = "projclean";
   };
 })
