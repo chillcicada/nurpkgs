@@ -2,6 +2,7 @@
   lib,
   fetchFromGitHub,
   rustPlatform,
+  nix-update-script,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -17,11 +18,17 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   cargoHash = "sha256-9atTgWg1iYCeXsRLLMOR87CbpIezD3ozMMOgumRNKAg=";
 
+  passthru.updateScript = nix-update-script { };
+
   meta = {
     description = "Project dependencies & build artifacts cleanup tool.";
     homepage = "https://github.com/sigoden/projclean";
-    license = lib.licenses.mit;
-    platforms = lib.platforms.linux;
+    license = with lib.licenses; [
+      mit
+      asl20
+    ];
+    platforms = lib.platforms.all;
     maintainers = with lib.maintainers; [ chillcicada ];
+    mainProgram = "projclean";
   };
 })
