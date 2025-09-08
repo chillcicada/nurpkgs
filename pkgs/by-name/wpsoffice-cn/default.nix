@@ -26,8 +26,9 @@
   libusb1,
 }:
 let
-  pkgVersion = "12.1.2.22571.AK.preread.sw_480057";
-  url = "https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${lib.elemAt (lib.splitVersion pkgVersion) 3}/wps-office_${pkgVersion}_amd64.deb";
+  pkgVersion = "12.1.2.22571";
+  pkgSuffix = "AK.preread.sw_480057_amd64.deb";
+  url = "https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${lib.last (lib.splitVersion pkgVersion)}/wps-office_${pkgVersion}.${pkgSuffix}";
   hash = "sha256-oppJqiUEe/0xEWxgKVMPMFngjQ0e5xaac6HuFVIBh8I=";
   uri = builtins.replaceStrings [ "https://wps-linux-personal.wpscdn.cn" ] [ "" ] url;
   securityKey = "7f8faaaa468174dc1c9cd62e5f218a5b";
@@ -37,7 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = pkgVersion;
 
   src =
-    runCommandLocal "wps-office_${finalAttrs.version}_amd64.deb"
+    runCommandLocal "wps-office_${finalAttrs.version}.${pkgSuffix}"
       {
         outputHashMode = "recursive";
         outputHashAlgo = "sha256";
