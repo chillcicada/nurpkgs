@@ -5,8 +5,10 @@
   autoPatchelfHook,
   alsa-lib,
   at-spi2-core,
+  libjpeg,
   libtool,
   libxkbcommon,
+  bzip2,
   nspr,
   udev,
   gtk3,
@@ -16,7 +18,6 @@
   xorg,
   cups,
   pango,
-  bzip2,
   libmysqlclient,
   runCommandLocal,
   curl,
@@ -79,8 +80,10 @@ stdenv.mkDerivation {
   buildInputs = [
     alsa-lib
     at-spi2-core
+    libjpeg
     libtool
     libxkbcommon
+    bzip2
     nspr
     udev
     gtk3
@@ -101,14 +104,14 @@ stdenv.mkDerivation {
     pango
   ];
 
-  autoPatchelfIgnoreMissingDeps = [
-    "libpeony.so.3"
-  ];
-
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out
+
+    rm usr/bin/misc
+    rm opt/kingsoft/wps-office/{desktops,INSTALL} -r
+    rm opt/kingsoft/wps-office/office6/{libpeony-wpsprint-menu-plugin.so,libbz2.so}
 
     cp -r opt $out
     cp -r usr/{bin,share} $out
@@ -127,8 +130,6 @@ stdenv.mkDerivation {
   '';
 
   preFixup = ''
-    # libbz2 dangling symlink
-    ln -sf ${bzip2.out}/lib/libbz2.so $out/opt/kingsoft/wps-office/office6/libbz2.so
     # dlopen dependency
     patchelf --add-needed libudev.so.1 $out/opt/kingsoft/wps-office/office6/addons/cef/libcef.so
     # libmysqlclient dependency
