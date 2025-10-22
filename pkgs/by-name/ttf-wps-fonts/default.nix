@@ -5,6 +5,7 @@
 }:
 
 let
+  # https://github.com/streetsamurai00mi/ttf-ms-win10
   ttf-ms-win10 = fetchFromGitHub {
     name = "ttf-ms-win10";
     owner = "streetsamurai00mi";
@@ -13,28 +14,35 @@ let
     sha256 = "sha256-UwkHlrSRaXhfoMlimyXFETV9yq1SbvUXykrhigf+wP8=";
   };
 
+  # https://github.com/dv-anomaly/ttf-wps-fonts
   ttf-wps-fonts = fetchFromGitHub {
     name = "ttf-wps-fonts";
-    owner = "BannedPatriot";
+    owner = "dv-anomaly";
     repo = "ttf-wps-fonts";
     rev = "8c980c24289cb08e03f72915970ce1bd6767e45a";
     sha256 = "sha256-x+grMnpEGLkrGVud0XXE8Wh6KT5DoqE6OHR+TS6TagI=";
   };
 
   pname = "ttf-ms-win10-wps-mix";
-  # Based on ttf-wps-fonts
-  version = "unstable-2024-10-29";
+  version = "unstable-2024-10-29"; # Based on ttf-wps-fonts
 in
 
 stdenvNoCC.mkDerivation {
-  inherit pname version;
+  # inherit pname version;
+  src = fetchFromGitHub {
+    name = "ttf-wps-fonts";
+    owner = "dv-anomaly";
+    repo = "ttf-wps-fonts";
+    rev = "8c980c24289cb08e03f72915970ce1bd6767e45a";
+    sha256 = "sha256-x+grMnpEGLkrGVud0XXE8Wh6KT5DoqE6OHR+TS6TagI=";
+  };
 
-  srcs = [
-    ttf-ms-win10
-    ttf-wps-fonts
-  ];
+  # srcs = [
+  #   ttf-ms-win10
+  #   ttf-wps-fonts
+  # ];
 
-  sourceRoot = ".";
+  # sourceRoot = ".";
 
   installPhase = ''
     runHook preInstall
